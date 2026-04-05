@@ -1,4 +1,7 @@
 spring:
+  config:
+    import: optional:.env[.properties]
+
   application:
     name: "umc10th"
 
