@@ -20,7 +20,10 @@ jobs:
 
       - name: .env 생성
         run: |
-          echo "${{ secrets.ENV }}" > .env
+              mkdir -p src/main/resources
+              cat <<EOF > src/main/resources/.env
+              ${{ secrets.ENV }}
+              EOF
         shell: bash
 
       - name: gradlew 실행 권한 부여
