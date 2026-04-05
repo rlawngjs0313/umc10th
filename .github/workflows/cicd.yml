@@ -20,8 +20,8 @@ jobs:
 
       - name: .env 생성
         run: |
-              mkdir -p src/main/resources
-              cat <<EOF > src/main/resources/.env
+              mkdir -p ./src/main/resources
+              cat <<EOF > ./src/main/resources/.env
               ${{ secrets.ENV }}
               EOF
         shell: bash
