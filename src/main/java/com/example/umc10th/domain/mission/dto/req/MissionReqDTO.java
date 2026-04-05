@@ -1,4 +1,4 @@
-package com.example.umc10th.domain.mission.dto;
+package com.example.umc10th.domain.mission.dto.req;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

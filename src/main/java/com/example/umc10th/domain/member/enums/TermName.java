@@ -1,4 +1,5 @@
 package com.example.umc10th.domain.member.enums;
 
-public enum Term {
+public enum TermName {
+    AGE, SERVICE, PRIVACY, LOCATION, MARKETING
 }

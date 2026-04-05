@@ -8,6 +8,14 @@ class Umc10thApplicationTests {
 
     @Test
     void contextLoads() {
+        MemberControllerTest memberControllerTest = new MemberControllerTest();
+
+        memberControllerTest.getInfoTest();
     }
 
+}
+
+class MemberControllerTest {
+    @Test
+    void getInfoTest() {}
 }
