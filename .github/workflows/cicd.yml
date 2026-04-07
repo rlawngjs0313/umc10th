@@ -59,24 +59,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: EC2_1에 Docker Image 배포
+      - name: EC2에 Docker Image 배포
         uses: appleboy/ssh-action@v0.1.6
         with:
-          host: ${{ secrets.EC2_HOST1 }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          port: 22
-          timeout: 60s
-          script: |
-            sudo docker stop ${{ secrets.DOCKER_IMAGENAME }}
-            sudo docker rm ${{ secrets.DOCKER_IMAGENAME }}
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGENAME }}
-            sudo docker run -it -d --network host --name ${{ secrets.DOCKER_IMAGENAME }} -e TZ=Asia/Seoul ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGENAME }}
-
-      - name: EC2_2에 Docker Image 배포
-        uses: appleboy/ssh-action@v0.1.6
-        with:
-          host: ${{ secrets.EC2_HOST2 }}
+          host: ${{ secrets.EC2_HOST1 }}, ${{ secrets.EC2_HOST2 }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
