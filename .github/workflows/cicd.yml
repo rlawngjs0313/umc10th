@@ -57,7 +57,9 @@ jobs:
           ssh -i private_key.pem -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_HOST "
             pgrep java | xargs -r kill -15  # 기존에 실행 중인 Java 프로세스 종료
             sleep 10
-            echo "${{ secrets.ENV }}" > /home/ubuntu/.env
+            cat << 'EOF' > .env
+            '$ENV'
+            EOF
             nohup java -jar /home/$EC2_USERNAME/BackEnd.jar > app.log 2>&1 &  # 새 버전 애플리케이션 실행
           "
           rm -f private_key.pem  # 민감한 정보 삭제
@@ -67,6 +69,7 @@ jobs:
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
           EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
           EC2_HOST: ${{ secrets.EC2_HOST2 }}
+          ENV: ${{ secrets.ENV }}
         run: |
           echo "$EC2_SSH_KEY" > private_key.pem
           chmod 600 private_key.pem
@@ -75,7 +78,9 @@ jobs:
           ssh -i private_key.pem -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_HOST "
             pgrep java | xargs -r kill -15  # 기존에 실행 중인 Java 프로세스 종료
             sleep 10
-            echo "${{ secrets.ENV }}" > /home/ubuntu/.env
+            cat << 'EOF' > .env
+            '$ENV'
+            EOF
             nohup java -jar /home/$EC2_USERNAME/BackEnd.jar > app.log 2>&1 &  # 새 버전 애플리케이션 실행
           "
           rm -f private_key.pem  # 민감한 정보 삭제
