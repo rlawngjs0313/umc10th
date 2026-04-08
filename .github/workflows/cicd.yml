@@ -69,4 +69,4 @@ jobs:
             sudo docker rm ${{ secrets.DOCKER_IMAGENAME }}
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGENAME }}
             echo "${{ secrets.ENV }}" > .env
-            sudo docker run -it -d --network host --name ${{ secrets.DOCKER_IMAGENAME }} --env-file .env TZ=Asia/Seoul ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGENAME }}
+            sudo docker run -it -d --network host --name ${{ secrets.DOCKER_IMAGENAME }} --env-file .env ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGENAME }}
