@@ -67,7 +67,7 @@ jobs:
         env:
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
           EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
-          EC2_HOST: ${{ secrets.EC2_HOST1 }}
+          EC2_HOST: ${{ secrets.EC2_HOST2 }}
           ENV: ${{ secrets.ENV }}
         run: |
           echo "$EC2_SSH_KEY" > private_key.pem
