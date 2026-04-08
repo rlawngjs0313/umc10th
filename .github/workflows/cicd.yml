@@ -50,6 +50,7 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGENAME }}
+          platforms: linux/amd64, linux/arm64
 
   deploy:
     needs: build
